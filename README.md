@@ -8,10 +8,10 @@ This plugin adds HTTP Live Streaming (HLS) support to Artillery to make it possi
 
 > HTTP Live Streaming (also known as HLS) is an HTTP-based media streaming communications protocol implemented by Apple Inc. as part of its QuickTime, Safari, OS X, and iOS software. Client implementations are also available in Microsoft Edge, Firefox and some versions of Google Chrome. Support is widespread in streaming media servers.
 
-Source: [HTTP Live Streaming] on Wikipedia
+Source: [HTTP Live Streaming](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) on Wikipedia
 
 Additional reading:
-- [HTTP Live Streaming] - official Apple documentation
+- [HTTP Live Streaming](https://developer.apple.com/streaming/) - official Apple documentation
 
 ## Usage
 

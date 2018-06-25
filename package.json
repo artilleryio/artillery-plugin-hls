@@ -1,0 +1,25 @@
+{
+  "name": "artillery-plugin-hls",
+  "version": "0.0.1",
+  "description": "HTTP Live Streaming (HLS) support for Artillery",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index"
+  },
+  "keywords": [
+    "hls",
+    "load",
+    "testing",
+    "artillery"
+  ],
+  "author": "Shoreditch Ops Ltd <https://artillery.io>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "async": "^2.6.1",
+    "debug": "^3.1.0",
+    "m3u8-parser": "^4.2.0",
+    "ratelimit": "0.0.4",
+    "requestretry": "^1.13.0",
+    "sync-request": "^6.0.0"
+  }
+}
