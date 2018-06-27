@@ -1,6 +1,6 @@
 {
   "name": "artillery-plugin-hls",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTTP Live Streaming (HLS) support for Artillery",
   "main": "index.js",
   "scripts": {
