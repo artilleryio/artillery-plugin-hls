@@ -178,17 +178,17 @@ function HlsPlugin(script, event, opts) {
   }
 
   function stream(requestParams, ctx, events, callback) {
-    requestParams.url = renderVariables(requestParams.url, context);
+    requestParams.url = renderVariables(requestParams.url, ctx);
 
     let concurrency = 4;
     let streamSelector = createStreamSelector(requestParams);
     let throttle;
 
     if (requestParams.hls.concurrency) {
-      concurrency = renderVariables(requestParams.hls.concurrency, context);
+      concurrency = renderVariables(requestParams.hls.concurrency, ctx);
     }
     if (typeof requestParams.hls.throttle === 'number') {
-      throttle = renderVariables(requestParams.hls.throttle, context);
+      throttle = renderVariables(requestParams.hls.throttle, ctx);
     } else {
       throttle = Infinity;
     }
