@@ -12,7 +12,9 @@ module.exports = {
 
 const METRICS = {
   SEGMENT_STARTED: 'HLS: segment download started',
-  SEGMENT_COMPLETED: 'HLS: segment download completed'
+  SEGMENT_COMPLETED: 'HLS: segment download completed',
+  STREAM_STARTED: 'HLS: stream download started',
+  STREAM_COMPLETED: 'HLS: stream download completed'
 };
 
 function download(concurrency, resources, throttle, events, callback) {
@@ -207,6 +209,7 @@ function HlsPlugin(script, event, opts) {
       }
     );
     const startedAt = Date.now();
+    events.emit('counter', METRICS.STREAM_STARTED, 1);
     download(concurrency, resources, throttle, events, function(err) {
       if (err) {
         debug(err);
@@ -214,7 +217,7 @@ function HlsPlugin(script, event, opts) {
         return callback(err);
       }
       const delta = Date.now() - startedAt;
-      events.emit('counter', METRICS.SEGMENT_COMPLETED, 1);
+      events.emit('counter', METRICS.STREAM_COMPLETED, 1);
       events.emit('customStat', {
         stat: 'HLS: stream download time',
         value: delta
