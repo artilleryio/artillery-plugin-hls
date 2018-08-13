@@ -4,6 +4,8 @@
 
 This plugin adds HTTP Live Streaming (HLS) support to Artillery to make it possible to load test HLS streaming servers. With the plugin enabled, when a request to an M3U8 playlist is made, Artillery will parse the playlist, pick one of the alternative streams, and download its segments (`.ts` files).
 
+🐞 Please report issues over at [https://github.com/shoreditch-ops/artillery/issues](https://github.com/shoreditch-ops/artillery/issues)
+
 ### HTTP Live Streaming (HLS)
 
 > HTTP Live Streaming (also known as HLS) is an HTTP-based media streaming communications protocol implemented by Apple Inc. as part of its QuickTime, Safari, OS X, and iOS software. Client implementations are also available in Microsoft Edge, Firefox and some versions of Google Chrome. Support is widespread in streaming media servers.
