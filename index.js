@@ -169,6 +169,10 @@ function HlsPlugin(script, event, opts) {
           };
         } else if (selectorParams.index === 'random') {
           streamSelector = randomStreamSelector;
+        } else if (selectorParams.index === 'all') {
+          streamSelector = function(variantStreams) {
+            return variantStreams;
+          };
         }
       }
     } else {
