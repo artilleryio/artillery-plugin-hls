@@ -2,7 +2,7 @@
 
 ## Description
 
-This plugin adds HTTP Live Streaming (HLS) support to Artillery to make it possible to load test HLS streaming servers. With the plugin enabled, when a request to an M3U8 playlist is made, Artillery will parse the playlist, pick one of the alternative streams, and download its segments (`.ts` files).
+This plugin adds HTTP Live Streaming (HLS) support to [Artillery](https://artillery.io) to make it possible to load test HLS streaming servers. With the plugin enabled, when a request to an M3U8 playlist is made, Artillery will parse the playlist, pick one of the alternative streams, and download its segments (`.ts` files).
 
 🐞 Please report issues over at [https://github.com/shoreditch-ops/artillery/issues](https://github.com/shoreditch-ops/artillery/issues)
 
