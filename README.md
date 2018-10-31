@@ -64,7 +64,7 @@ The following options are supported on the `hls` attribute:
 - `resolution` - set `width` and `height` to pick the stream that matches
 - `name` - set to match on the `NAME` attribute of a stream
 - `bandwidth` - set to a number to select a specific bandwidth; or to `"min"`/`"max"` to select the lowest/highest bandwidth
-- `index` - set to a number to select the alternative stream at that index in the playlist or to `"random"` to select a stream at random
+- `index` - set to a number to select the alternative stream at that index in the playlist, `"random"` to select a stream at random, or `"all"` to iterate through all streams.
 
 ## Reported Metrics
 
