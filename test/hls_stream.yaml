@@ -1,0 +1,21 @@
+config:
+  target: "http://localhost:10888"
+  phases:
+    - arrivalCount: 4
+      duration: 1
+  plugins:
+    hls: {}
+scenarios:
+  - flow:
+      - get:
+          url: "/streams/x36xhzz/x36xhzz.m3u8"
+          debugThrottle: true
+          hls: # Must be set to options object or true
+            concurrency: 10 # defaults to 4
+            # # If not specified, a stream is selected at random. Only one selector may be specified:
+            streamSelector:
+              resolution:
+                width: 320
+                height: 184
+            # No throttling if not specified - will contend with other network users on the same machine:
+            #throttle: 100 # kb
