@@ -49,7 +49,7 @@ var parseManifest = function(content) {
   return parser.manifest;
 };
 
-var parseKey = function(basedir, decrypt, resources, manifest, parent) {
+var parseKey = function(basedir, decrypt, resources, manifest, parent, urlVariables) {
 	if (!manifest.parsed.segments[0] || !manifest.parsed.segments[0].key) {
 		return {};
 	}
@@ -57,7 +57,7 @@ var parseKey = function(basedir, decrypt, resources, manifest, parent) {
 
 	var keyUri = key.uri;
 	if (!isAbsolute(keyUri)) {
-		keyUri = joinURI(path.dirname(manifest.uri), keyUri);
+		keyUri = joinURI(path.dirname(manifest.uri), path.basename(keyUri));
 	}
 
 	// if we are not decrypting then we just download the key
@@ -74,6 +74,9 @@ var parseKey = function(basedir, decrypt, resources, manifest, parent) {
 			path.relative(path.dirname(manifest.file), key.file)
 		));
 		key.uri = keyUri;
+		if (urlVariables) {
+			key.uri+=urlVariables;
+		}
 		resources.push(key);
 		return key;
 	}
@@ -98,10 +101,14 @@ var parseKey = function(basedir, decrypt, resources, manifest, parent) {
 };
 
 var walkPlaylist = function(decrypt, basedir, uri, parent, manifestIndex, playlistFilter) {
+
 	var resources = [];
 	var manifest  = {};
 	manifest.uri  = uri;
 	manifest.file = path.join(basedir, path.basename(uri));
+
+	let parsedUrl = new URL(manifest.uri);
+	let urlVariables = parsedUrl.search;
 	resources.push(manifest);
 
 	// if we are not the master playlist
@@ -128,7 +135,7 @@ var walkPlaylist = function(decrypt, basedir, uri, parent, manifestIndex, playli
 	manifest.parsed.mediaGroups = manifest.parsed.mediaGroups || {};
 
   var playlists = manifest.parsed.playlists.concat(mediaGroupPlaylists(manifest.parsed.mediaGroups));
-	var key = parseKey(basedir, decrypt, resources, manifest, parent);
+	var key = parseKey(basedir, decrypt, resources, manifest, parent,urlVariables);
 
 	// SEGMENTS
 	manifest.parsed.segments.forEach(function(s, i) {
@@ -145,6 +152,10 @@ var walkPlaylist = function(decrypt, basedir, uri, parent, manifestIndex, playli
 			s.key.iv = s.key.iv || new Uint32Array([0, 0, 0, manifest.parsed.mediaSequence, i]);
 		}
 		manifest.content = new Buffer(manifest.content.toString().replace(s.uri, path.basename(s.uri)));
+
+		if (urlVariables) {
+			s.uri+=urlVariables;
+		}
 		resources.push(s);
 	});
 
