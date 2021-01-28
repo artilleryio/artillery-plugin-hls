@@ -70,7 +70,7 @@ The following options are supported on the `hls` attribute:
 
 The plugin adds a number of custom metrics to Artillery reports:
 
-- **HLS: segment download started** - the number of individual segments (`.ts` files) requested from the server
+- **HLS: segment download started** - the number of individual segments (`.ts` files) downloaded from the server
 - **HLS: segment download completed** - the number of segments downloaded
 - **HLS: segment download time** - the amount of time it's taken to download a segment
 - **HLS: stream download time** - the amount of time it's taken to download an entire stream
